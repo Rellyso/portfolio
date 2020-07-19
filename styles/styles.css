@@ -27,8 +27,30 @@ header {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-html {
-    min-height: 100vh;
+p a {
+    position: relative;
+    text-decoration: none;
+}
+
+p a::before {
+    content: '';
+
+    width: 100%;
+    height: 2px;
+
+    bottom: 0;
+
+    background-color: var(--color-green);
+    position: absolute;
+
+    transform: translateY(-5px);
+    opacity: 0;
+    transition: all .2s ease-out;
+}
+
+p a:hover::before {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .content {
@@ -49,7 +71,8 @@ html {
 
     text-decoration: none;
 
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
     line-height: 28px; /* quando em duvida, usar 10px na altura de linha */
 
     margin: 0 16px;
@@ -94,23 +117,31 @@ html {
     padding: 32px;
 }
 
-@keyframes swipeUp {
-    from {
-        transform: translateY(10px);
-        opacity: .3;
-    } to {
-        transform: translateY(0);
-    }
+.img__content {
+    height: 300px;
+    width: 300px;
+
+    border: 5px solid var(--color-green);
+    border-radius: 50%;
+
+    margin: 0 auto;
+    margin-bottom: 32px;
+
+    animation: swipeUp .3s ease-out;
+
+    overflow: hidden;
 }
 
 #wrapper img {
-    height: 300px;
-    border-radius: 50%;
-    border: 5px solid var(--color-green);
+    width: 100%;
 
-    margin-bottom: 32px;
+    margin: 0 auto;
 
-    animation: swipeUp .3s ease-out; 
+    transition: transform 2s ease;
+}
+
+#wrapper img:hover {
+    transform: scale(1.1);
 }
 
 .main__content {
@@ -163,6 +194,7 @@ html {
     max-width: 800px;
 
     margin: 0 auto;
+    margin-bottom: 32px;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -174,6 +206,8 @@ html {
 
     display: flex;    
     flex-direction: column;
+
+    animation: swipeUp ease-out 600ms;
 }
 
 .card__img-container img {
@@ -258,4 +292,23 @@ iframe {
     position: absolute;
 
     top: 5%;
+}
+
+@media (max-width:1200px) {
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .container {
+        margin: 0 32px;
+    }
+}
+
+@keyframes swipeUp {
+    from {
+        transform: translateY(10px);
+        opacity: .3;
+    } to {
+        transform: translateY(0);
+    }
 }
