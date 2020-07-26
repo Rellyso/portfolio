@@ -191,7 +191,7 @@ p a:hover::before {
 /* CARDS */
 
 .cards {
-    max-width: 800px;
+    max-width: 1000px;
 
     margin: 0 auto;
     margin-bottom: 32px;
@@ -206,8 +206,11 @@ p a:hover::before {
 
     display: flex;    
     flex-direction: column;
+    justify-content: space-around;
 
     animation: swipeUp ease-out 600ms;
+
+    cursor: pointer;
 }
 
 .card__img-container img {
